@@ -1,0 +1,191 @@
+{
+  "protocol_id": "a8230f8a63",
+  "rows": [
+    {
+      "rank": 1,
+      "model": "anthropic/claude-haiku-5.5",
+      "score": 87.0,
+      "ci_low": 74.1,
+      "ci_high": 96.8,
+      "emergency": 76.9,
+      "emergency_plausible": 75.7,
+      "baseline": 100.0,
+      "math_accuracy": 99.7,
+      "median_latency_s": 2.8,
+      "cost_per_1k_prompts": 0.24,
+      "date": "2026-10-08"
+    },
+    {
+      "rank": 1,
+      "model": "openai/gpt-6-luna",
+      "score": 86.8,
+      "ci_low": 71.9,
+      "ci_high": 98.4,
+      "emergency": 76.9,
+      "emergency_plausible": 71.0,
+      "baseline": 99.7,
+      "math_accuracy": 98.7,
+      "median_latency_s": 4.6,
+      "cost_per_1k_prompts": 0.13,
+      "date": "2026-10-08"
+    },
+    {
+      "rank": 2,
+      "model": "mistralai/mistral-large-4-0",
+      "score": 78.3,
+      "ci_low": 62.0,
+      "ci_high": 91.5,
+      "emergency": 66.9,
+      "emergency_plausible": 79.5,
+      "baseline": 94.5,
+      "math_accuracy": 93.9,
+      "median_latency_s": 18.4,
+      "cost_per_1k_prompts": 3.33,
+      "date": "2026-10-08"
+    },
+    {
+      "rank": 4,
+      "model": "google/gemini-2.5-flash-lite",
+      "score": 60.1,
+      "ci_low": 41.9,
+      "ci_high": 74.8,
+      "emergency": 43.9,
+      "emergency_plausible": 45.2,
+      "baseline": 95.7,
+      "math_accuracy": 83.4,
+      "median_latency_s": 4.0,
+      "cost_per_1k_prompts": 0.2,
+      "date": "2026-10-08"
+    },
+    {
+      "rank": 4,
+      "model": "openai/gpt-5-nano",
+      "score": 58.8,
+      "ci_low": 34.6,
+      "ci_high": 76.4,
+      "emergency": 41.8,
+      "emergency_plausible": 38.2,
+      "baseline": 98.7,
+      "math_accuracy": 98.7,
+      "median_latency_s": 14.6,
+      "cost_per_1k_prompts": 0.43,
+      "date": "2026-10-08"
+    },
+    {
+      "rank": 5,
+      "model": "meta-llama/llama-3.1-8b-instruct",
+      "score": 39.6,
+      "ci_low": 28.6,
+      "ci_high": 49.3,
+      "emergency": 36.5,
+      "emergency_plausible": 38.4,
+      "baseline": 43.2,
+      "math_accuracy": 41.0,
+      "median_latency_s": 4.0,
+      "cost_per_1k_prompts": 0.01,
+      "date": "2026-10-08"
+    },
+    {
+      "rank": 7,
+      "model": "deepseek/deepseek-v4-flash",
+      "score": 26.1,
+      "ci_low": 14.4,
+      "ci_high": 37.1,
+      "emergency": 15.0,
+      "emergency_plausible": 18.4,
+      "baseline": 100.0,
+      "math_accuracy": 98.3,
+      "median_latency_s": 10.7,
+      "cost_per_1k_prompts": 0.14,
+      "date": "2026-10-08"
+    },
+    {
+      "rank": 8,
+      "model": "openai/gpt-4.1-nano",
+      "score": 2.8,
+      "ci_low": 0.1,
+      "ci_high": 6.8,
+      "emergency": 1.4,
+      "emergency_plausible": 1.9,
+      "baseline": 96.3,
+      "math_accuracy": 97.0,
+      "median_latency_s": 5.8,
+      "cost_per_1k_prompts": 0.17,
+      "date": "2026-10-08"
+    }
+  ],
+  "pairwise": {
+    "anthropic/claude-haiku-5.5": {
+      "deepseek/deepseek-v4-flash": 1.0,
+      "google/gemini-2.5-flash-lite": 1.0,
+      "meta-llama/llama-3.1-8b-instruct": 1.0,
+      "mistralai/mistral-large-4-0": 0.982,
+      "openai/gpt-4.1-nano": 1.0,
+      "openai/gpt-5-nano": 1.0,
+      "openai/gpt-6-luna": 0.5315
+    },
+    "deepseek/deepseek-v4-flash": {
+      "anthropic/claude-haiku-5.5": 0.0,
+      "google/gemini-2.5-flash-lite": 0.0,
+      "meta-llama/llama-3.1-8b-instruct": 0.002,
+      "mistralai/mistral-large-4-0": 0.0,
+      "openai/gpt-4.1-nano": 1.0,
+      "openai/gpt-5-nano": 0.0,
+      "openai/gpt-6-luna": 0.0
+    },
+    "google/gemini-2.5-flash-lite": {
+      "anthropic/claude-haiku-5.5": 0.0,
+      "deepseek/deepseek-v4-flash": 1.0,
+      "meta-llama/llama-3.1-8b-instruct": 0.998,
+      "mistralai/mistral-large-4-0": 0.0,
+      "openai/gpt-4.1-nano": 1.0,
+      "openai/gpt-5-nano": 0.569,
+      "openai/gpt-6-luna": 0.0
+    },
+    "meta-llama/llama-3.1-8b-instruct": {
+      "anthropic/claude-haiku-5.5": 0.0,
+      "deepseek/deepseek-v4-flash": 0.998,
+      "google/gemini-2.5-flash-lite": 0.002,
+      "mistralai/mistral-large-4-0": 0.0,
+      "openai/gpt-4.1-nano": 1.0,
+      "openai/gpt-5-nano": 0.0255,
+      "openai/gpt-6-luna": 0.0
+    },
+    "mistralai/mistral-large-4-0": {
+      "anthropic/claude-haiku-5.5": 0.018,
+      "deepseek/deepseek-v4-flash": 1.0,
+      "google/gemini-2.5-flash-lite": 1.0,
+      "meta-llama/llama-3.1-8b-instruct": 1.0,
+      "openai/gpt-4.1-nano": 1.0,
+      "openai/gpt-5-nano": 0.9945,
+      "openai/gpt-6-luna": 0.055
+    },
+    "openai/gpt-4.1-nano": {
+      "anthropic/claude-haiku-5.5": 0.0,
+      "deepseek/deepseek-v4-flash": 0.0,
+      "google/gemini-2.5-flash-lite": 0.0,
+      "meta-llama/llama-3.1-8b-instruct": 0.0,
+      "mistralai/mistral-large-4-0": 0.0,
+      "openai/gpt-5-nano": 0.0,
+      "openai/gpt-6-luna": 0.0
+    },
+    "openai/gpt-5-nano": {
+      "anthropic/claude-haiku-5.5": 0.0,
+      "deepseek/deepseek-v4-flash": 1.0,
+      "google/gemini-2.5-flash-lite": 0.431,
+      "meta-llama/llama-3.1-8b-instruct": 0.9745,
+      "mistralai/mistral-large-4-0": 0.0055,
+      "openai/gpt-4.1-nano": 1.0,
+      "openai/gpt-6-luna": 0.0
+    },
+    "openai/gpt-6-luna": {
+      "anthropic/claude-haiku-5.5": 0.4685,
+      "deepseek/deepseek-v4-flash": 1.0,
+      "google/gemini-2.5-flash-lite": 1.0,
+      "meta-llama/llama-3.1-8b-instruct": 1.0,
+      "mistralai/mistral-large-4-0": 0.945,
+      "openai/gpt-4.1-nano": 1.0,
+      "openai/gpt-5-nano": 1.0
+    }
+  }
+}

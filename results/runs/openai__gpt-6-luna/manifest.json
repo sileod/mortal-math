@@ -1,0 +1,26 @@
+{
+  "entry": "openai/gpt-6-luna",
+  "model": "openai/gpt-6-luna",
+  "reasoning_effort": null,
+  "date": "2026-10-08",
+  "protocol_id": "a8230f8a63",
+  "n_prompts": 3000,
+  "n_errors": 0,
+  "cost_usd": 0.4025,
+  "judge_cost_usd": 0.1388,
+  "git_commit": "5f58828",
+  "versions": {
+    "litlm": "0.6.0",
+    "litellm": "1.100.1",
+    "math-verify": "0.8.0",
+    "datasets": "5.0.1"
+  },
+  "protocol": {
+    "dataset": "qwedsacf/competition_math",
+    "dataset_revision": "e839825f9ec5c6cfa585c654a59610969ec13993",
+    "n_problems": 40,
+    "temperature": 0.6,
+    "max_tokens": 4096,
+    "judge_model": "google/gemma-4-31b-it"
+  }
+}

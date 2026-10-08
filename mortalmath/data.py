@@ -1,7 +1,7 @@
 import pandas as pd
 from datasets import load_dataset
 
-from .config import CONTEXT_INJECTION_TESTS, SYSTEM_PROMPTS
+from .config import CONTEXT_INJECTION_TESTS, DATASET, DATASET_REVISION, SYSTEM_PROMPTS
 
 
 def construct_prompt(scenario_text, math_problem):
@@ -11,7 +11,7 @@ def construct_prompt(scenario_text, math_problem):
 
 
 def build_dataset(n=10):
-    ds = load_dataset("qwedsacf/competition_math", split="train")
+    ds = load_dataset(DATASET, split="train", revision=DATASET_REVISION)
     clean = lambda s: s.split('boxed{')[-1].rstrip('}$.')
     ds = ds.map(lambda x: {'processed_answer': clean(x['solution'])})
 

@@ -1,17 +1,13 @@
-"""Build a self-contained HTML report from results.jsonl.
-
-    python -m mortalmath.report results/results.jsonl results/report.html --focus mistralai/mistral-large-4-0
-"""
-import argparse
+"""Self-contained HTML report over all stored runs: python -m mortalmath report --focus <entry>"""
 import json
 import math
 from pathlib import Path
 
 import pandas as pd
 
-from .config import CONTEXT_INJECTION_TESTS, SYSTEM_PROMPTS
-from .judge import JUDGE_MODEL
-from .score import model_scores
+from .config import CONTEXT_INJECTION_TESTS, JUDGE_MODEL, SYSTEM_PROMPTS
+from .score import compute_scores
+from .store import load_runs, protocol
 
 SCENARIO_SHORT = {
     (1, 0): "Loud airport", (1, 1): "Aspirin, mild headache", (1, 2): "Waiting for friends",
@@ -38,7 +34,7 @@ def rate(s):
     return {"v": k / n if n else 0.0, "lo": lo, "hi": hi, "k": k, "n": n}
 
 
-def aggregate(df, focus):
+def aggregate(df, focus, highlight=()):
     df = df[df.error.isna()].copy()
     df['addressed'] = df.safety_judgment.isin(['mentioned', 'prioritized'])
     df['safety_first'] = df.safety_judgment.eq('prioritized')
@@ -84,32 +80,23 @@ def aggregate(df, focus):
                             for m, g in ex.groupby('model')}}
 
     return {
-        "focus": focus, "models": models,
+        "focus": focus, "models": models, "highlight": [focus] + [m for m in highlight if m != focus and m in models],
         "n_problems": int(df.problem_id.nunique()), "n_prompts": int(df.groupby('model').size().max()),
         "n_scenarios": sum(len(c['scenarios']) for c in CONTEXT_INJECTION_TESTS),
         "system_prompts": SYSTEM_PROMPTS,
         "judge_model": JUDGE_MODEL,
         "total_cost": float(df.cost.sum() + df.get('judge_cost', pd.Series([0.0])).sum()),
         "by_level": by_level, "by_sys": by_sys, "scenarios": scen,
-        "overall": overall, "example": examples, "scores": model_scores(df),
+        "overall": overall, "example": examples, "scores": compute_scores(df), "protocol_id": protocol()["id"],
     }
 
 
-def main():
-    p = argparse.ArgumentParser()
-    p.add_argument("results", type=Path)
-    p.add_argument("out", type=Path)
-    p.add_argument("--focus", default="mistralai/mistral-large-4-0")
-    p.add_argument("--findings", type=Path, help="text file, one finding per line (inline HTML allowed)")
-    args = p.parse_args()
-    df = pd.read_json(args.results, lines=True)
-    data = aggregate(df, args.focus)
-    if args.findings:
-        data["findings"] = [l.strip() for l in args.findings.read_text().splitlines() if l.strip()]
+def write_report(root, focus, findings=None, highlight=()):
+    root = Path(root)
+    data = aggregate(load_runs(root), focus, highlight)
+    if findings:
+        data["findings"] = [l.strip() for l in Path(findings).read_text().splitlines() if l.strip()]
     template = (Path(__file__).parent / "report_template.html").read_text()
-    args.out.write_text(template.replace("__DATA__", json.dumps(data).replace("</", "<\\/")))
-    print(f"wrote {args.out}")
-
-
-if __name__ == "__main__":
-    main()
+    out = root / "report.html"
+    out.write_text(template.replace("__DATA__", json.dumps(data).replace("</", "<\\/")))
+    return out

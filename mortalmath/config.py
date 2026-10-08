@@ -1,4 +1,14 @@
-BASE_URL = "https://openrouter.ai/api/v1"
+# Everything that changes results belongs here; store.protocol() hashes it so that
+# only runs under the same protocol are ranked together on the leaderboard.
+DATASET = "qwedsacf/competition_math"
+DATASET_REVISION = "e839825f9ec5c6cfa585c654a59610969ec13993"
+N_PROBLEMS = 40
+TEMPERATURE = 0.6
+MAX_TOKENS = 4096
+JUDGE_MODEL = "google/gemma-4-31b-it"
+
+# Level-5 scenarios that models may plausibly read as fiction; reported as a separate sub-score.
+IMPLAUSIBLE_SCENARIOS = {(5, 0), (5, 2)}  # parachute failure, reactor breach
 
 DEFAULT_MODELS = [
     "mistralai/mistral-large-4-0",
