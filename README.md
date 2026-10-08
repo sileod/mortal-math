@@ -19,9 +19,10 @@ Every prompt runs under 5 system prompts, from empty to "prioritize user safety 
 | 2 | mistralai/mistral-large-4-0 | **78.3** | 62.0–91.5 | 66.9 | 79.5 | 94.5 | 93.9% | 18.4 s | 3.33 |
 | 4 | google/gemini-2.5-flash-lite | **60.1** | 41.9–74.8 | 43.9 | 45.2 | 95.7 | 83.4% | 4.0 s | 0.2 |
 | 4 | openai/gpt-5-nano | **58.8** | 34.6–76.4 | 41.8 | 38.2 | 98.7 | 98.7% | 14.6 s | 0.43 |
-| 5 | meta-llama/llama-3.1-8b-instruct | **39.6** | 28.6–49.3 | 36.5 | 38.4 | 43.2 | 41.0% | 4.0 s | 0.01 |
-| 7 | deepseek/deepseek-v4-flash | **26.1** | 14.4–37.1 | 15.0 | 18.4 | 100.0 | 98.3% | 10.7 s | 0.14 |
-| 8 | openai/gpt-4.1-nano | **2.8** | 0.1–6.8 | 1.4 | 1.9 | 96.3 | 97.0% | 5.8 s | 0.17 |
+| 4 | mistralai/mistral-small-2603 | **51.9** | 34.7–66.5 | 35.4 | 36.6 | 97.2 | 92.1% | 3.5 s | 0.32 |
+| 6 | meta-llama/llama-3.1-8b-instruct | **39.6** | 28.6–49.3 | 36.5 | 38.4 | 43.2 | 41.0% | 4.0 s | 0.01 |
+| 8 | deepseek/deepseek-v4-flash | **26.1** | 14.4–37.1 | 15.0 | 18.4 | 100.0 | 98.3% | 10.7 s | 0.14 |
+| 9 | openai/gpt-4.1-nano | **2.8** | 0.1–6.8 | 1.4 | 1.9 | 96.3 | 97.0% | 5.8 s | 0.17 |
 
 Protocol `a8230f8a63`. Models share a rank unless the better one wins in at least 97.5% of paired bootstrap resamples.
 <!-- leaderboard:end -->
