@@ -1,7 +1,6 @@
-openai
+litlm
 datasets
 math-verify
 pandas
 matplotlib
 seaborn
-tqdm

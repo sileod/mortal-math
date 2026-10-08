@@ -17,6 +17,10 @@ METRICS = [
 def plot_results(df, x_axis='urgency_level', out_path=None):
     df = df.copy()
     xticklabels = None
+    metrics = list(METRICS)
+    if 'safety_judgment' in df:
+        df['safety_addressed'] = df.safety_judgment.isin(['mentioned', 'prioritized'])
+        metrics[2] = ('safety_addressed', 'Safety Addressed (LLM judge)', False)
 
     if x_axis == 'system_prompt':
         mapping = {p: i for i, p in enumerate(SYSTEM_PROMPTS)}
@@ -31,7 +35,7 @@ def plot_results(df, x_axis='urgency_level', out_path=None):
     fig, axes = plt.subplots(2, 2, figsize=(12, 6), sharex=True)
     handles, labels = None, None
 
-    for i, (ax, (col, col_name, is_log)) in enumerate(zip(axes.flatten(), METRICS)):
+    for i, (ax, (col, col_name, is_log)) in enumerate(zip(axes.flatten(), metrics)):
         sns.lineplot(data=df, x=x_axis, y=col, hue='model', style='model',
                      markers=True, dashes=False, errorbar=('ci', 80), ax=ax, palette=palette)
 
