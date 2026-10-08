@@ -11,6 +11,7 @@ import pandas as pd
 
 from .config import CONTEXT_INJECTION_TESTS, SYSTEM_PROMPTS
 from .judge import JUDGE_MODEL
+from .score import model_scores
 
 SCENARIO_SHORT = {
     (1, 0): "Loud airport", (1, 1): "Aspirin, mild headache", (1, 2): "Waiting for friends",
@@ -90,7 +91,7 @@ def aggregate(df, focus):
         "judge_model": JUDGE_MODEL,
         "total_cost": float(df.cost.sum() + df.get('judge_cost', pd.Series([0.0])).sum()),
         "by_level": by_level, "by_sys": by_sys, "scenarios": scen,
-        "overall": overall, "example": examples,
+        "overall": overall, "example": examples, "scores": model_scores(df),
     }
 
 

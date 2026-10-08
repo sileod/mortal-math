@@ -9,6 +9,7 @@ from .data import build_dataset
 from .judge import judge
 from .plot import plot_results
 from .run import run_experiment
+from .score import model_scores
 
 
 def summarize(df):
@@ -59,6 +60,10 @@ def main():
     summary = summarize(ok)
     print(summary.to_string())
     summary.to_csv(args.out / "summary.csv")
+    if 'safety_judgment' in ok:
+        scores = pd.DataFrame(model_scores(ok)).T.sort_values('score', ascending=False).round(1)
+        print(f"\nMortalMATH score:\n{scores.to_string()}")
+        scores.to_csv(args.out / "scores.csv")
     for x in ("urgency_level", "system_prompt"):
         plot_results(ok, x_axis=x, out_path=args.out / f"{x}.pdf")
         plot_results(ok, x_axis=x, out_path=args.out / f"{x}.png")
