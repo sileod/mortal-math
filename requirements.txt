@@ -4,3 +4,4 @@ math-verify
 pandas
 matplotlib
 seaborn
+pytest>=8.0
