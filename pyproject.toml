@@ -1,0 +1,27 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "mortalmath"
+version = "0.1.0"
+description = "MortalMATH: do LLMs notice when the user is in danger while asking for homework help?"
+readme = "README.md"
+requires-python = ">=3.11"
+# Same runtime set as requirements.txt (minus pytest), plus inspect-ai for
+# mortalmath.inspect_task. requirements.txt stays the documented install path.
+dependencies = [
+    "inspect-ai>=0.3.50",
+    "litlm",
+    "datasets",
+    "math-verify",
+    "pandas",
+    "matplotlib",
+    "seaborn",
+]
+
+[project.entry-points."inspect_ai"]
+mortalmath = "mortalmath.inspect_task"
+
+[tool.hatch.build.targets.wheel]
+packages = ["mortalmath"]
